@@ -1,10 +1,11 @@
+
 <!doctype html>
 <html lang="ko">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="imagetoolbar" content="no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>네토그린</title>
+<title>쇼룸 예약 | 네토그린</title>
 <!-- <link rel="stylesheet" href="https://netogreen.kr/theme/basic/css/default.css?ver=2303229">
  -->
 <!--[if lte IE 8]>
@@ -63,11 +64,14 @@ var g5_shop_url = "https://netogreen.kr/shop";
 
 
 
-<link rel="stylesheet" href="https://netogreen.kr/theme/basic/css/main.css?ver=2303229">
+<link rel="stylesheet" href="https://netogreen.kr/theme/basic/css/sub.css?ver=2303229">
 
 
 
 <link rel="stylesheet" href="https://netogreen.kr/js/font-awesome/css/font-awesome.min.css?ver=2303229">
+<link rel="stylesheet" href="./css/style.css?ver=2303229">
+<link rel="stylesheet" href="./css/reservation.css?ver=2303229">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css"/>
 <script src="https://netogreen.kr/js/jquery-1.12.4.min.js?ver=2304171"></script>
 <script src="https://netogreen.kr/js/jquery-migrate-1.4.1.min.js?ver=2304171"></script>
 <script src="https://netogreen.kr/js/jquery.menu.js?ver=2304171"></script>
@@ -81,30 +85,7 @@ var g5_shop_url = "https://netogreen.kr/shop";
 <!--  -->
 
 
-
-<!-- 팝업레이어 시작 { -->
-<div id="hd_pop">
-    <h2>팝업레이어 알림</h2>
-
-<span class="sound_only">팝업레이어 알림이 없습니다.</span></div>
-
-<script>
-$(function() {
-    $(".hd_pops_reject").click(function() {
-        var id = $(this).attr('class').split(' ');
-        var ck_name = id[1];
-        var exp_time = parseInt(id[2]);
-        $("#"+id[1]).css("display", "none");
-        set_cookie(ck_name, 1, exp_time, g5_cookie_domain);
-    });
-    $('.hd_pops_close').click(function() {
-        var idb = $(this).attr('class').split(' ');
-        $('#'+idb[1]).css('display','none');
-    });
-    $("#hd").css("z-index", 1000);
-});
-</script>
-<!-- } 팝업레이어 끝 --><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-------------------------- 네비게이션 -------------------------->
 
@@ -153,7 +134,7 @@ $(function() {
 			</a>
 		</div>
 		<div class="menu-title">
-					</div>
+			쇼룸 예약 & 조회 및 취소		</div>
 		<div class="m-menu-open" id="menu-open">
           <span class="burgur" id="burgur">
           <span class="top-line"></span>
@@ -195,382 +176,573 @@ $(function() {
 <!-------------------------- ./게시판 상단 배경 수정하는 곳 -------------------------->
 
 
+<div class="wrap">
 
-
-
-<!-- <div class="cursor">
-  <div class="cursor__ball cursor__ball--big ">
-    <svg height="30" width="30">
-      <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
-    </svg>
+  <div class="title-section pc">
+    <h2 data-aos="fade-up" data-aos-duration="500">쇼룸 예약 & 조회 및 취소</h2>
+    <div>
+    </div>
   </div>
-  
-  <div class="cursor__ball cursor__ball--small">
-    <svg height="10" width="10">
-      <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
-    </svg>
+
+
+  <div class="reser-form-wrap">
+
+    <!-- <div class="image-container" style="text-align: center;">
+        <img src="./img/banner_240327.png" alt="banner_240327">
+    <h1 style="display:none;">쇼룸 예약</h1> -->
+
+    <div class="map-wrap">
+      <div class="map-txt">
+        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_978_334)">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.00038 0C10.8671 0 14.0008 3.07234 14.0008 6.86336C14.0008 8.24852 13.5825 9.53816 12.863 10.6162L7.03335 20L1.22844 10.7492C1.09428 10.5581 0.970609 10.3612 0.857434 10.1576L0.84769 10.1407H0.849189C0.308047 9.16706 0 8.05012 0 6.86336C0 3.07234 3.13368 0 7.00038 0ZM7.00038 3.76015C8.74822 3.76015 10.1655 5.14972 10.1655 6.86336C10.1655 8.57699 8.74822 9.96657 7.00038 9.96657C5.25253 9.96657 3.83522 8.57699 3.83522 6.86336C3.83522 5.14972 5.25253 3.76015 7.00038 3.76015Z" fill="#1FEB1F"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_978_334">
+        <rect width="14" height="20" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        <p class="pc">쇼룸주소 <span>경기도 화성시 동탄첨단산업1로 14 동탄케이밸리 4층</span></p>
+        <p class="mo">동탄쇼룸
+      </p>
+      </div>
+      <!-- <a class="map-link pc" href="https://docs.google.com/presentation/d/1GOJyF5xyfWdeesvtrqi1o312fxdTzL395OyF2uIuezg/edit#slide=id.p" target="_blank">
+          길 안내 바로가기 ⇥
+      </a>
+      <a class="map-link mo" href="https://docs.google.com/presentation/d/12skhQRe4LfE1dmADT-DRPzaxEeKlKyUnlpu-Syt_ero/edit?usp=sharing" target="_blank">
+        길 안내 바로가기 ⇥
+      </a> -->
+    </div>
+    <p class="mo map-mo">경기도 화성시 동탄첨단산업1로 14 <br/>동탄케이밸리 4층</p>
+
+    <form id="frmhr" class="form-box" name="frmhr" method="post" action="form_update_x.php">
+		<input type="hidden" id="w" name="w" value="">
+		<input type="hidden" id="hr_id" name="hr_id" value="">
+            <ul id="bo_cate_ul" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
+        <li class="on"><a href="https://netogreen.kr/plugin/tl_HR/form.php" id="bo_cate_on">쇼룸 예약</a></li>
+        <li><a href="https://netogreen.kr/plugin/tl_HR/list.php">예약 조회 및 취소</a></li>
+      </ul>
+
+      <!-- <div class="banner-wrap">
+        <img src="https://netogreen.kr/theme/basic/img/common/event-banner.png" alt="" class="pc">
+        <img src="https://netogreen.kr/theme/basic/img/common/m-event-banner.png" alt="" class="mo">
+      </div> -->
+
+      <section>
+        <div class="dt-wrapper" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
+          <div class="calendar-wrap">
+            <h3>방문을 원하시는 날짜를 선택해 주세요.</h3>
+            <div class="cal-box">
+              <div class="cal-navi">
+                <button type="button" class="btn-prev">
+                  <img src="./img/ic-arrow-left.svg" alt="">
+                </button>
+                <h2>2026.02</h2>
+                <button type="button" class="btn-next">
+                  <img src="./img/ic-arrow-right.svg" alt="">
+                </button>
+              </div>
+              <div id="cal-table-box">
+              </div>
+              <div class="cal-info" style="display:none;">
+                <label for="hr_date" class="sound_only">선택일자</label>
+                <input type="text" name="hr_date" id="hr_date" class="frm_input" readonly placeholder="날짜선택">
+              </div>
+            </div>
+          </div>
+          
+          <div class="time-box">
+            <h3>방문을 원하시는 시간을 선택해 주세요.</h3>
+            <table>
+              <colgroup>
+                <col width="10%">
+                <col width="90%">
+              </colgroup>
+              <tbody id="time-list-box">
+                <tr>
+                  <td colspan="2">방문 일자를 선택해주세요.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="time-info" style="display:none;">
+              <input type="text" name="hr_time" id="hr_time" class="frm_input" readonly placeholder="시간선택">
+              <span><i class="fa fa-clock-o"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="neto-form-wrap" style="display:none;" data-aos="fade-up" data-aos-duration="500">
+
+        <div class="notice">
+          <h3>세부사항 <span>선택 입력</span></h3>
+          <!-- <p>고민중이신 경우 공란으로 남겨주세요.</p> -->
+        </div>
+
+        <fieldset class="space-form">
+            <!--<p>설치를 희망하시는 공간을 선택해 주세요. 
+                  <img src="./img/ic-setting.svg" alt=""> 
+                </p> -->
+          <div class="select-space" style="display:none;">
+		  	    				    <div>
+					    <input type="radio" id="myLand0" name="space" value="토지(소유)" onChange="select_areas(this)">
+					    <label for="myLand0">토지(소유)</label>
+				    </div>
+			      				    <div>
+					    <input type="radio" id="myLand1" name="space" value="토지(임대)" onChange="select_areas(this)">
+					    <label for="myLand1">토지(임대)</label>
+				    </div>
+			      				    <div>
+					    <input type="radio" id="myLand2" name="space" value="건물내부(소유)" onChange="select_areas(this)">
+					    <label for="myLand2">건물내부(소유)</label>
+				    </div>
+			      				    <div>
+					    <input type="radio" id="myLand3" name="space" value="건물내부(임대)" onChange="select_areas(this)">
+					    <label for="myLand3">건물내부(임대)</label>
+				    </div>
+			      				    <div>
+					    <input type="radio" id="myLand4" name="space" value="상담희망" onChange="select_areas(this)">
+					    <label for="myLand4">상담희망</label>
+				    </div>
+			                </div>
+
+          <div class="land-add">
+            <!-- <label for="ladnAddress"><span id="chtext">토지</span>의 주소를 입력해주세요.</label> -->
+            <label for="ladnAddress">설치를 원하시는 장소의 주소를 입력해주세요.</label>
+            <div>
+              <input type="text" id="landAddress" name="landAddress" placeholder="ex.경기도 화성시">
+            </div>
+          </div>
+
+          <div class="land-area"  style="display:none;">
+            <label for="landArea"><span id="chtext2">토지</span>의 면적을 입력해 주세요.</label>
+            <div>
+              <input onkeyup="formatNumber(event)" class="number" type="text" id="landArea" name="landArea" placeholder="예:3,000" value="">
+              <select name="landAreatx" id="landAreatx">
+                <option value="평">평</option>
+                <option value="㎡">㎡</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="land-area02" style="display:none;">
+            <div>
+              <label for="width">가로</label>
+              <input onkeyup="formatNumber(event)" class="number" type="text" id="width" name="width" placeholder="m" value="">
+            </div>
+            <div>
+              <label for="length">세로</label>
+              <input onkeyup="formatNumber(event)" class="number" type="text" id="length" name="length" placeholder="m" value="">
+            </div>
+            <div id="showdiv">
+              <label for="height">높이</label>
+              <input onkeyup="formatNumber(event)" class="number" type="text" id="height" name="height" placeholder="m" value="">
+            </div>
+          </div>
+
+          <!--
+          <div class="landtype-wrap" style="display:none;">
+            <div>
+              <p>
+                토지의 지목을 선택해주세요.
+                <img src="./img/ic-typeland.svg" alt="">
+              </p>
+              <a href="https://ddangya.com/home/map" target="_blank">지목 확인 가능한 사이트 바로 가기 ⇥</a>  
+            </div>
+          </div>
+          
+
+          <div class="select-land" style="display:none;">
+            				        <div>
+                  <input type="radio" id="forest0" name="landType" value="임야">
+                  <label for="forest0">임야</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest1" name="landType" value="전">
+                  <label for="forest1">전</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest2" name="landType" value="답">
+                  <label for="forest2">답</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest3" name="landType" value="공장용지">
+                  <label for="forest3">공장용지</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest4" name="landType" value="창고용지">
+                  <label for="forest4">창고용지</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest5" name="landType" value="잡종지">
+                  <label for="forest5">잡종지</label>
+                </div>
+			      				        <div>
+                  <input type="radio" id="forest6" name="landType" value="기타">
+                  <label for="forest6">기타</label>
+                </div>
+			                </div>
+          
+          <div class="etc-wrap1" style="display:none;">
+              <label for="landEtc-write">*기타 지목을 입력해주세요.</label>
+              <input type="text" id="landEtc-write" name="landTpyetext">
+          </div>
+          -->
+          
+          <div class="typeCrop" style="display:none;">
+            <div>
+              <p>재배를 고려 중이신 작물이 있으시다면 선택해 주세요.
+                <img src="./img/ic-crop.svg" alt="">
+              </p>
+            </div>
+          </div>
+
+          <div class="reser-select-crop" style="display:none;">
+                          <div>
+                <input type="radio" id="leafy0" name="cropType" value="엽채류">
+                <label for="leafy0">엽채류</label>
+              </div>
+                          <div>
+                <input type="radio" id="leafy1" name="cropType" value="허브류">
+                <label for="leafy1">허브류</label>
+              </div>
+                          <div>
+                <input type="radio" id="leafy2" name="cropType" value="양상추">
+                <label for="leafy2">양상추</label>
+              </div>
+                          <div>
+                <input type="radio" id="leafy3" name="cropType" value="버섯">
+                <label for="leafy3">버섯</label>
+              </div>
+                          <div>
+                <input type="radio" id="leafy4" name="cropType" value="기타">
+                <label for="leafy4">기타</label>
+              </div>
+                      </div>
+          <!--
+          <div class="etc-wrap2" style="display:none;">
+              <label for="landEtc-write">*기타 작물을 입력해주세요.</label>
+              <input type="text" id="landEtc-write2" name="cropTypetext">
+          </div>
+          -->
+          <div class="remarks-wrap" style="display:none;">
+            <label for="remark">추가 상담 요청사항</label>
+            <textarea name="hr_content"></textarea>
+          </div>
+
+        </fieldset>
+
+      </section>
+
+      <!--         <section>
+          <h3>진료과목 선택</h3>
+          <div style="padding:0.5em;">
+                          <div class="pretty p-default p-curve p-pulse">
+                <input type="checkbox" name="hr_course[]" value="토지(소유)" id="hr_course0">
+                <div class="state p-primary">
+                  <label for="hr_course0" class="hr_course">토지(소유)</label>
+                </div>
+              </div>
+                          <div class="pretty p-default p-curve p-pulse">
+                <input type="checkbox" name="hr_course[]" value="토지(임대)" id="hr_course1">
+                <div class="state p-primary">
+                  <label for="hr_course1" class="hr_course">토지(임대)</label>
+                </div>
+              </div>
+                          <div class="pretty p-default p-curve p-pulse">
+                <input type="checkbox" name="hr_course[]" value="건물내부(소유)" id="hr_course2">
+                <div class="state p-primary">
+                  <label for="hr_course2" class="hr_course">건물내부(소유)</label>
+                </div>
+              </div>
+                          <div class="pretty p-default p-curve p-pulse">
+                <input type="checkbox" name="hr_course[]" value="건물내부(임대)" id="hr_course3">
+                <div class="state p-primary">
+                  <label for="hr_course3" class="hr_course">건물내부(임대)</label>
+                </div>
+              </div>
+                          <div class="pretty p-default p-curve p-pulse">
+                <input type="checkbox" name="hr_course[]" value="상담희망" id="hr_course4">
+                <div class="state p-primary">
+                  <label for="hr_course4" class="hr_course">상담희망</label>
+                </div>
+              </div>
+                      </div>
+        </section>
+       -->
+
+    <section class="neto-form-wrap" data-aos="fade-up" data-aos-duration="500">
+      <div class="notice">
+        <h3>개인정보 취급 동의 <span>동의 필수</span></h3>
+      </div>
+      <div class="confirm_wrapper" style="margin-top:20px">
+        <!--<textarea></textarea>-->
+        <div class="privacy-box">
+          <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial, sans-serif;color:rgb(70,70,70);background-color:rgb(255,255,255);font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">1. 개인정보의 수집·이용 목적 : 고객문의, 접수, 처리결과 안내</span></p><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial, sans-serif;color:rgb(70,70,70);background-color:rgb(255,255,255);font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">2. 개인정보의 수집항목 : 이메일,비밀번호, 문의내용 및 기타 고객이 직접 입력한 내용</span></p><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial, sans-serif;color:rgb(70,70,70);background-color:rgb(255,255,255);font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">3. 개인정보의 보유 및 이용기간 : 상담 문의 접수 시점 및 상담 완료 후 6개월이며, 세부사항은 '개인정보처리방침'을 확인 (단, 관련 법령에 의거 보존할 필요성이 있는 경우에는 관련 법령에 따라 보존 가능)</span></p><p align="center"><span></span></p><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span style="font-size:10pt;font-family:Arial, sans-serif;color:rgb(70,70,70);background-color:rgb(255,255,255);font-weight:400;font-style:normal;font-variant:normal;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">4. 개인정보의 제공을 거부할 권리가 있으며, 거부 할 경우 쇼룸 예약이 어려울 수 있습니다.</span></p>        </div>
+        <div class="checkbox">
+          <div class="pretty p-default p-curve p-pulse">
+            <input type="checkbox" id="confirm1">
+            <div class="state p-success"><label for="confirm1" style="vertical-align: top;">개인정보취급방침에 동의합니다.</label></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="hr-info">
+        <div class="notice">
+          <h3>예약자 정보 <span>필수 입력</span></h3>
+          전화번호 오기입 시 예약이 확정되지 않으니 전화번호를 정확히 입력해 주십시오. 예약 확정 시에는 기입해 주신 전화번호로 알림톡이 발송됩니다. <br><br>
+          예약 완료 후 5분 내 알림톡을 수신하지 못하신 고객께서는 010-8257-8007로 연락 부탁드립니다.<br><br>
+        </div>
+
+       <div class="row">
+          <div class="item">
+            <label for="hr_name">이름<span>*</span></label>
+            <input type="text" name="hr_name" value="" id="hr_name" required class="frm_input required" placeholder="성명을 입력하세요.">
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="item">
+            <label for="hr_phone">전화번호<span>*</span></label>
+            <input type="text" name="hr_phone" value="" id="hr_phone" class="frm_input required" placeholder="공백 및 구분기호 없이 숫자만 입력하세요">
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <textarea id="hr_content" name="hr_content" placeholder="내용을 입력하세요." style="width:100%"></textarea>
+        </div> -->
+              </section>
+      
+      <div class="action">
+        <button type="submit" class="btn_submit">예약하기</button>
+      </div>
+
+    </form>
+
+    <section class="data-info">
+      <h3>유의사항 안내</h3>
+      <ul>
+        <li>- 예약 조회 및 취소는 ‘쇼룸 예약 > 예약 조회 및 취소' 에서 가능합니다.</li>
+        <li>- 예약 변경을 원하실 경우 예약 취소 후 재예약을 진행해 주십시오.</li>
+        <li>- 원활한 쇼룸 체험을 위해 예약 시간에 맞춰 도착 부탁드립니다.</li>
+        <li>- 쇼룸 예약 관련 문의 : qna@netogreenkr.com / 010-8257-8007</li>
+      </ul>
+    </section>
+
   </div>
-</div> -->
-
-<!-------------------------- 메인 인터랙션 -------------------------->
-
-<!-- <div class="interaction">
-	<div class="container">
-		<div class="wrap">
-			<img src="https://netogreen.kr/theme/basic/img/common/symbol-logo.svg" alt="">
-
-			<div class="txt-wrap">
-				<div class="txt">
-					<div class="top">
-						<div>
-							<p>돈 버는 농사 파트너</p>
-							<p>네토그린의</p>
-						</div>
-					</div>
-					<div class="bottom">
-						<p>스마트팜을 경험해 보세요!</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
 
 
-
-<div class="loader">
-	<img src="https://netogreen.kr/theme/basic/img/common/logo-b.svg" alt="네토그린 로고">
 </div>
 
-<section class="main">
-	<div class="content-wrap">
-		<img src="https://netogreen.kr/theme/basic/img/common/symbol-logo.svg" alt="네토그린 심볼 로고" class="symbol">
-		<div class="txt animate">
-			<div class="txtBox01">
-				<ul class="money">
-					<li>돈</li>
-				</ul>버는 농사 파트너
-			</div>
-			<div class="txtBox02">
-				<ul class="neto">
-					<li class="N">네</li>
-					<li class="T">토</li>
-					<li class="G">그</li>
-					<li class="L">린</li>
-				</ul>
-				의
-			</div>
-			<div class="txtBox03">
-				<ul class="smartfarm">
-					<li>스</li>
-					<li>마</li>
-					<li>트</li>
-					<li>팜</li>
-				</ul>
-				을 경험해 보세요!
-			</div>
+<script>
 
-		</div>
-	</div>
-	<div class="bg">
+
+  function str_cal_table(dates) {
+    var str = '';
+    str += '<table>';
+    str += '<thead><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead>';
+    str += '<tbody>';
+    for (var i = 0; i < dates.length; i++) {
+      row = dates[i];
+      tmps = row['date'].split('-')
+      h = dates[i]['ann'] && dates[i]['ann']['holiday'] ? 1 : 0;
+      if (i % 7 == 0) str += '<tr>';
+      str += '<td class="' + (!!row['time'] ? 'work' : '') + '" data-time="' + row['time'] + '" data-date="' + row['date'] + '"><div class="tdi">';
+      str += '<div class="cm cm' + row['cm'] + '" >' + tmps[2] + '</div>';
+      if (row['ann'] && row['ann']['name']) str += '<div class="h' + h + '">' + row['ann']['name'] + '</div>';
+      str += '</div></td>';
+      if (i % 7 == 6) str += '</tr>';
+    }
+    str += '</tbody>'
+    str += '</table>';
+    return str;
+  }
+  $(function() {
+    var prev = null;
+    var next = null;
+
+    function ajax_cal(yyyy, mm) {
+      $.ajax({
+        type: "post",
+        url: "calendar_x.php",
+        data: {
+          'yyyy': yyyy,
+          'mm': mm
+        },
+        dataType: "json",
+        success: function(data) {
+          var html = str_cal_table(data.dates);
+          $('#cal-table-box').html(html);
+          //진료날짜시간 초기화
+          $('#hr_date').val('');
+          $('#hr_time').val('');
+          prev = data.prev;
+          next = data.next;
+        }
+      });
+    }
+
+
+
+    function ajax_date(date) {
+      $.ajax({
+        type: "post",
+        url: "time_x.php",
+        data: {
+		  'hr_id' : $("#hr_id").val(),
+	      'w' : $("#w").val(),
+          'hr_date': date
+        },
+        dataType: "json",
+        success: function(data) {
+          $('#time-list-box .item').each(function(index, element) {
+            var time = $(this).attr('data-time');
+            if ($.inArray(time, data.times) != -1) {
+              $(this).addClass('close').find('.state').text('');
+            } else {
+              $(this).find('.state').text('');
+            }
+          });
+        }
+      });
+    }
+    var yyyy = 2026;
+    var mm = 02;
+    ajax_cal(yyyy, mm)
+
+    $('.cal-box .btn-prev').click(function(e) {
+      e.preventDefault();
+      if (prev) {
+        ajax_cal(prev.yyyy, prev.mm);
+        $(this).blur();
+        $('.cal-navi h2').text(prev.yyyy + '.' + prev.mm);
+      }
+    });
+    $('.cal-box .btn-next').click(function(e) {
+      e.preventDefault();
+      if (next) {
+        ajax_cal(next.yyyy, next.mm);
+        $(this).blur();
+        $('.cal-navi h2').text(next.yyyy + '.' + next.mm);
+      }
+    });
+
+    $('#cal-table-box').on('click', 'td.work', function(e) {
+      $('#cal-table-box td.work').removeClass('on');
+      $(this).addClass('on');
+
+      var time_str = $(this).attr('data-time');
+      var date = $(this).attr('data-date');
+      var times = time_str.split("\n");
+      $('#hr_date').val(date);
+
+      var str = '<tr>';
+      var am = '';
+      var pm = '';
+      for (var i = 0; i < times.length; i++) {
+        if (times[i] <= '12:00') am += '<div data-time="' + times[i] + '" class="item">' + times[i] + '<span class="state"></span></div>';
+        else pm += '<div data-time="' + times[i] + '" class="item">' + times[i] + '<span class="state"></span></div>';
+      }
+      //str = '<tr><td>' + am + pm + '</td></tr>';
+      str = '<tr height="80"><td class="pc">오전</td><td class="tl">' + am + '</td></tr><tr><td class="pc">오후</td><td class="tl">' + pm + '</td></tr>';
+      $('#time-list-box').html(str);
+
+      //진료시간 초기화
+      $('#hr_time').val('');
+
+      ajax_date(date);
+    });
+
+
+    $('#time-list-box').on('click', '.item', function() {
+      var $this = $(this);
+      if (!$this.hasClass('close')) {
+        $('#time-list-box .item').removeClass('on');
+        $this.addClass('on');
+        $('#hr_time').val($this.attr('data-time'));
+      }
+    });
+
+    $('#frmhr').submit(function(e) {
+      e.preventDefault();
+
+      if (!$('#confirm1').prop('checked')) {
+        alert('개인정보취급방침에 동의하세요');
+        $('#confirm1').focus();
+        return false;
+      }
+
+
+            var s_data = $(this).serialize();
+      var x_url = $(this).attr('action');
+      $.ajax({
+        type: "POST",
+        url: x_url,
+        data: s_data,
+        dataType: "json",
+        success: function(data) {
+          if (data['error']) {
+            alert(data['error']);
+          } else {
+            alert("예약 신청이 완료되었습니다.");
+            if (g5_is_member) {
+              location.href = 'list.php';
+            } else {
+              location.href = 'list.php?hr_password=' + $('#hr_password').val() + '&hr_name=' + $('#hr_name').val();
+            }
+          }
+        }
+      });
+
+      return false;
+    });
+  });
+
+  $(document).ready(function(){
+
+	$("input[type=radio][name=landType]").change(function(){
+		var chval = $('input[type=radio][name=landType]:checked').val();
+		if(chval == "기타"){
+			$(".etc-wrap1").show();
+		}
+		else{
+			$(".etc-wrap1").hide();
+		}
+	});
+
+	$("input[type=radio][name=cropType]").change(function(){
+		var chval = $('input[type=radio][name=cropType]:checked').val();
+		if(chval == "기타"){
+			$(".etc-wrap2").show();
+		}
+		else{
+			$(".etc-wrap2").hide();
+		}
+	});
+
+	  });
+
+  function select_areas(obj){
+	  var listVar = $(obj).val();
+
+	  if(listVar == "건물내부(소유)" || listVar == "건물내부(임대)"){
+		$("#chtext").html("건물");
+		$("#chtext2").html("건물");
+		$(".landtype-wrap").hide();
+		$("#showdiv").show();
 		
-	</div>
-</section>
-
-<!-- <section class="section01">
-	<div class="container">
-		<div>
-			<img data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" src="https://netogreen.kr/theme/basic/img/common/event-banner.png" alt="">
-		</div>
-	</div>
-</section> -->
-
-<section class="section01">
-	<div class="container">
-		<div class="left-section">
-			<div data-aos="fade-up" data-aos-duration="500">
-				<h1>
-				돈 버는 <br class="pc">
-				농사파트너<br class="pc"> 
-				<span class="green">네토그린</span>
-				</h1>
-			</div>
-		</div>
-
-		<div class="right-section">
-			<!-- <p class="pc" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">네토그린은 대한민국 농업의 패러다임을 바꿉니다.</p> -->
-			<div class="swiper section01-slide" data-aos="fade-up" data-aos-delay="300">
-			<!-- Additional required wrapper -->
-				<div class="swiper-wrapper">
-					<!-- Slides -->
-					<div class="swiper-slide">
-						<p>네토그린은 대한민국 농업의 패러다임을 바꿉니다.</p>
-						<img src="https://netogreen.kr/theme/basic/img/main/sec01-img01.png" alt="">
-					</div>
-					<div class="swiper-slide">
-						<p>누구나 농사로 부자될 수 있도록 보급형 식물공장과</br>스마트농업 솔루션을 제공합니다.</p>
-						<img src="https://netogreen.kr/theme/basic/img/main/sec01-img02.png" alt="">
-					</div>
-					<div class="swiper-slide">
-						<p>누구나 농사로 부자될 수 있도록 보급형 식물공장과</br>스마트농업 솔루션을 제공합니다.</p>
-						<img src="https://netogreen.kr/theme/basic/img/main/sec01-img03.png" alt="">
-					</div>
-				</div>
-			</div>
-			<!-- <p class="mo" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">네토그린은 대한민국 농업의 패러다임을 바꿉니다.</p>
-			<p data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">누구나 농사로 부자될 수 있도록 <span class="light">보급형 식물공장과<br/>
-				스마트 농업 솔루션을 제공합니다.</span></p> -->
-		</div>
-
-	</div>
-</section>
-
-<section class="section02">
-	<div class="container">
-		<div class="left-section">
-			<div data-aos="fade-up" data-aos-duration="500">
-				<h1>왜<br class="pc">
-				<span class="green">네토그린</span>이어야<br class="pc">
-				할까요? </h1>
-				<button class="pc">
-					<span></span>
-					<a href="https://netogreen.kr/theme/basic/product-info.php">제품소개 바로가기</a>
-				</button>
-			</div>
-		</div>
-
-		<div class="right-section">
-			<div class="sec02-boxWrap"">
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="200" data-aos-duration="500">
-					<h3>누구나 쉽게</h3>
-					<div class="back">
-						<p>청년 농부부터 은퇴 후 귀농을 희망하는 <br/>
-						시니어까지 누구나 손쉽게 고효율의 <br/>
-						농업을 영위</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img01.png" alt="">
-				</div>
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="250" data-aos-duration="500">
-					<h3>고수익</h3>
-					<div class="back">
-						<p>연간 투자수익률 38% 예상</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img02.png" alt="">
-				</div>
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="300" data-aos-duration="500">
-					<h3>채산성 UP</h3>
-					<div class="back">
-						<p>공간활용 극대화로 기존 대비 <br/>
-						재식수량 4배, <br/>
-						가격은 그대로 가성비 갑 컨테이너팜</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img03.png" alt="">
-				</div>
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="350" data-aos-duration="500">
-					<h3>판로 지원</h3>
-					<div class="back">
-						<p> 대형 식자재 물류 센터부터 레스토랑까지 <br/>
-							판로 매칭과 컨설팅 지원으로 <br/>
-							경영리스크 최소화
-						</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img04.png" alt="">
-				</div>
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="400" data-aos-duration="500">
-					<h3>최적작물 추천</h3>
-					<div class="back">
-						<p>112종 재배 가능 엽채류<br/>
-							(프리미업 유럽종 상추), 허브류, 버섯류, <br/>
-							새싹류, 과채류, 화훼류
-						</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img05.png" alt="">
-				</div>
-				<div class="sec02-box" data-aos="flip-left" data-aos-delay="450" data-aos-duration="500">
-					<h3>머신러닝 기반<br/>스마트농업</h3>
-					<div class="back">
-						<p>스마트 재배시스템 스마트 모니터링<br/>
-							시스템 빅데이터+머신러닝 기반 <br/>
-							생산량 예측 시스템
-						</p>
-					</div>
-					<img src="https://netogreen.kr/theme/basic/img/main/sec02-img06.png" alt="">
-				</div>
-			</div>
-		</div>
-
-		<button class="mo">
-			<span></span>
-			<a href="https://netogreen.kr/theme/basic/product-info.php">제품소개 바로가기</a>
-		</button>
-
-	</div>
-</section>	
-
-<section class="section03">
-	<div>
-		<img data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" src="https://netogreen.kr/theme/basic/img/common/logo-b.svg" alt="">
-	</div>
-	<img class="left01" data-aos="fade-down" data-aos-duration="500" data-aos-delay="200" src="https://netogreen.kr/theme/basic/img/main/sec03-left-img01.png" alt="">
-	<img class="left02" data-aos="fade-down" data-aos-duration="500" data-aos-delay="250" src="https://netogreen.kr/theme/basic/img/main/sec03-left-img02.png" alt="">
-	<img class="left03" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" src="https://netogreen.kr/theme/basic/img/main/sec03-left-img03.png" alt="">
-	<img class="right01" data-aos="fade-left" data-aos-duration="500" data-aos-delay="250" src="https://netogreen.kr/theme/basic/img/main/sec03-right-img01.png" alt="">
-	<img class="right02" data-aos="fade-down" data-aos-duration="500" data-aos-delay="300" src="https://netogreen.kr/theme/basic/img/main/sec03-right-img02.png" alt="">
-	<img class="right03" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350" src="https://netogreen.kr/theme/basic/img/main/sec03-right-img03.png" alt="">
-</section>
-
-<section class="section04">
-
-	<div class="container">
-		<div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300" class="left-section">
-			<img src="https://netogreen.kr/theme/basic/img/main/sec04-img01.png" alt="">
-		</div>
-		<div data-aos="fade-left" data-aos-duration="500" data-aos-delay="400" class="right-section">
-			<p class="title">네토그린의 스마트팜은</p>
-			<p>상가건물, 지식산업센터, 창고, 노지 등 <br/>
-				<span>실내외 어디에서나 사철재배가 가능합니다.</span></p>
-			<div class="btn-wrap">
-				<button class="projection">
-					<span></span>
-					<a href="https://netogreen.kr/theme/basic/profit-projection.php">수익 프로젝션 바로가기</a>
-				</button>
-				<button class="showRoom">
-					<span></span>
-					<!--쇼룸 예약 링크 현재-->
-					<a href="https://netogreen.kr/plugin/tl_HR/form.php">쇼룸 예약 바로가기</a>
-					<!--쇼룸 예약 링크 백업
-					<a href="https://booking.naver.com/booking/6/bizes/1104312/items/5735356/" target="_blank" rel="noopener noreferrer">쇼룸 예약 바로가기</a>-->
-
-				</button>
-			</div>
-		</div>
-	</div>
-
-</section>
-
-<section class="section04">
-
-	<div class="container">
-		<div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300" class="left-section">
-			<img src="https://netogreen.kr/theme/basic/img/main/sec04-img02.png" alt="">
-		</div>
-		<div data-aos="fade-left" data-aos-duration="500" data-aos-delay="400" class="right-section" class="right-section">
-			<p class="title">네토그린의 스마트팜은</p>
-			<p>모듈화, 표준화, 최적화 제품으로 <br/>
-				<span>투자금 대비 높은 수익</span>을 얻을 수 있습니다.</p>
-			<div class="btn-wrap">
-				<button class="projection">
-					<span></span>
-					<a href="https://netogreen.kr/theme/basic/profit-projection.php">수익 프로젝션 바로가기</a>
-				</button>
-				<button class="showRoom">
-					<span></span>
-					<!--쇼룸 예약 링크 현재-->
-					<a href="https://netogreen.kr/plugin/tl_HR/form.php">쇼룸 예약 바로가기</a>
-					<!--쇼룸 예약 링크 백업
-					<a href="https://booking.naver.com/booking/6/bizes/1104312/items/5735356/" target="_blank" rel="noopener noreferrer">쇼룸 예약 바로가기</a>-->
-				</button>
-				
-			</div>
-		</div>
-	</div>
-	
-</section>
-
-<section class="section04">
-
-	<div class="container">
-		<div data-aos="fade-right" data-aos-duration="500" data-aos-delay="300" class="left-section">
-			<img src="https://netogreen.kr/theme/basic/img/main/sec04-img03.png" alt="">
-		</div>
-		<div data-aos="fade-left" data-aos-duration="500" data-aos-delay="400" class="right-section" class="right-section">
-			<p class="title">네토그린의 스마트팜은</p>
-			<p>스마트재배 시스템의 적용으로<br/>
-				<span>초심자도 손쉽게 고수익의 농사</span>를 가능케 합니다.</p>
-			<div class="btn-wrap">
-				<button class="projection">
-					<span></span>
-					<a href="https://netogreen.kr/theme/basic/profit-projection.php">수익 프로젝션 바로가기</a>
-				</button>
-				<button class="showRoom">
-					<span></span>
-					<!--쇼룸 예약 링크 현재-->
-					<a href="https://netogreen.kr/plugin/tl_HR/form.php">쇼룸 예약 바로가기</a>
-					<!--쇼룸 예약 링크 백업
-					<a href="https://booking.naver.com/booking/6/bizes/1104312/items/5735356/" target="_blank" rel="noopener noreferrer">쇼룸 예약 바로가기</a>-->
-				</button>
-			</div>
-		</div>
-	</div>
-
-</section>
-
-<!-- <div class="line"></div> -->
-
-<section class="section05 video-wrap">
-        <div class="container">
-            <h4 data-aos="fade-up" data-aos-duration="500">네토그린 스마트팜 영상</h4>
-			<div class="youtube-wrap">
-				<div>
-					<iframe width="100%" src="https://www.youtube.com/embed/h64fNOpSYyA
-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-aos="fade-up" data-aos-duration="500" data-aos-delay="300"></iframe>
-				</div>
-				<div>
-					<iframe width="100%" src="https://www.youtube.com/embed/d8OTVdDf1Kg
-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-aos="fade-up" data-aos-duration="500" data-aos-delay="350"></iframe>
-				</div>
-				<div>
-					<iframe width="100%" src="https://www.youtube.com/embed/uL_Diq6iEK8?si=NKCcTO_WKDYujVGO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen data-aos="fade-up" data-aos-duration="500" data-aos-delay="400"></iframe>
-				</div>
-
-			</div>
-        </div>
-</section>
-
-<!-- <div class="line"></div> -->
-
-<section class="section06 solution-wrap">
-	<div class="container">
-		<h4 data-aos="fade-up" data-aos-duration="500">네토그린의 토탈 솔루션</h4>
-		<div class="solutionBox-wrap">
-			<div class="solutionBox" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
-				<img src="https://netogreen.kr/theme/basic/img/sub/solution-ic01.svg" alt="">
-				<div class="txt-wrap">
-					<h5 class="title">시설</h5>
-					<p>식물공장 제조 및 시공 서비스</p>
-				</div>
-			</div>
-			<div class="solutionBox" data-aos="fade-up" data-aos-duration="500" data-aos-delay="350">
-				<img src="https://netogreen.kr/theme/basic/img/sub/solution-ic02.svg" alt="">
-				<div class="txt-wrap">
-					<h5 class="title">재배</h5>
-					<p>스마트농업 솔루션 제공</p>
-				</div>
-			</div>
-			<div class="solutionBox" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
-				<img src="https://netogreen.kr/theme/basic/img/sub/solution-ic03.svg" alt="">
-				<div class="txt-wrap">
-					<h5 class="title">유통</h5>
-					<p>스마트유통 솔루션 제공</p>
-				</div>
-			</div>
-		</div>
-		<div class="btn-wrap" data-aos="fade-up" data-aos-duration="500">
-			<button class="projection">
-				<span></span>
-				<a href="https://netogreen.kr/theme/basic/profit-projection.php">수익 프로젝션 바로가기</a>
-			</button>
-				<button class="showRoom">
-					<span></span>
-					<!--쇼룸 예약 링크 현재-->
-					<a href="https://netogreen.kr/plugin/tl_HR/form.php">쇼룸 예약 바로가기</a>
-					<!--쇼룸 예약 링크 백업
-					<a href="https://booking.naver.com/booking/6/bizes/1104312/items/5735356/" target="_blank" rel="noopener noreferrer">쇼룸 예약 바로가기</a>-->
-				</button>
-		</div>
-	</div>
-	
-</section>
+	  }
+	  else{
+		$("#chtext").html("토지");
+		$("#chtext2").html("토지");
+		$(".landtype-wrap").show();
+		$("#showdiv").hide();
+		
+	  }
+  }
+</script>
 
 
 
@@ -872,5 +1044,3 @@ function execDaumPostcode() {
 
 </body>
 </html>
-	
-<!-------------------------- ./메인 인터랙션 -------------------------->
